@@ -1,0 +1,11 @@
+Flask
+Flask_RESTful
+Flask_Script
+numpy
+pandas
+Werkzeug
+WTForms
+Flask-JSGlue
+flask-debugtoolbar
+requests
+pymongo
