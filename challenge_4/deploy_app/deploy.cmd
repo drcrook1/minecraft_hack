@@ -1,0 +1,1 @@
+helm install stable/mongodb --name minecraft-manager --set mongodbUsername=minecraft,mongodbPassword=minecraft

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraftmanager
+spec:
+  selector:
+      matchLabels:
+        app: minecraftmanager
+  replicas: 2
+  template:
+      metadata:
+        labels:
+            app: minecraftmanager
+      spec:
+        containers:
+        - name: minecraftmanager
+          image: openhack/minecraft-server
+          imagePullPolicy: Always
+          env:
+          - name: MONGO_CONN_STRING
+            value: "minecraft-manager-mongodb.default.svc.cluster.local"
+          - name: MONGOUSER
+            value: "minecraft"
+          - name: MONGOPASSWORD
+            value: "minecraft"
+          ports:
+          - containerPort: 80
+            name: portone
+    volumeMounts:
+      - name: kubeconfigvol
+        mountPath: "/tmp/apikey"
+        readOnly: true
+  volumes:
+  - name: kubeconfigvol
+    secret:
+      secretName: kubeconfg            
