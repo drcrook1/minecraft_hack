@@ -28,9 +28,9 @@ spec:
             name: portone
     volumeMounts:
       - name: kubeconfigvol
-        mountPath: "/tmp/apikey"
+        mountPath: "/secrets/"
         readOnly: true
   volumes:
   - name: kubeconfigvol
     secret:
-      secretName: kubeconfg            
+      secretName: kubeconfig

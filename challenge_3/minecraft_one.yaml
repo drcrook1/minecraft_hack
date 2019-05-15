@@ -15,7 +15,7 @@ spec:
       spec:
         containers:
         - name: minecraft-1-13-1
-          image: openhack/minecraft-server
+          image: ytechie/minecraft
           imagePullPolicy: Always
           env:
           - name: EULA
@@ -24,7 +24,7 @@ spec:
           - containerPort: 25575
             name: portone
           - containerPort: 25565
-            name: porttwo        
+            name: porttwo
           volumeMounts:
             - name: minecraft-vol
               mountPath: /data
