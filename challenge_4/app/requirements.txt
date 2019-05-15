@@ -9,3 +9,4 @@ Flask-JSGlue
 flask-debugtoolbar
 requests
 pymongo
+kubernetes

@@ -3,6 +3,7 @@ import sys
 from bson.json_util import dumps
 import json
 from subprocess import Popen, PIPE
+from kubernetes import client, config, watch
 
 kubernetes = Blueprint('kubernetes', __name__, url_prefix='/api/v1/k8')
 
@@ -15,14 +16,13 @@ def test():
     print(req_dict)
     return json.dumps({"output":req_dict["input"]})
 
-@kubernetes.route("/basichealth", methods=["GET"])
-def basic_health():
+@kubernetes.route("/pods", methods=['GET'])
+def pods():
     """
     gets some basic kubernetes health
     """
-    process = Popen(["kubectl", "get", "pods"], stdout=PIPE)
-    (output, err) = process.communicate()
-    print(output)
-    exit_code = process.wait()
-    return json.dumps({"output" : output})
-    
+    config.load_kube_config("/secrets/kubeconfig.txt")
+    v1 = client.CoreV1Api()
+    ret = v1.list_pod_for_all_namespaces(watch=False)
+    print(ret.items)
+    return json.dumps(ret.items)

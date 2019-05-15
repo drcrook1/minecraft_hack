@@ -22,10 +22,10 @@ def create_app():
     from app.apis.kubernetes import kubernetes
     app.register_blueprint(kubernetes)
 
-    register_extensions(app)
+    #register_extensions(app)
 
     return app
 
-def register_extensions(app):
-    global db
-    db = MongoClient(resolve_mongo_conn_string()).kubernetes
+# def register_extensions(app):
+#     global db
+#     db = MongoClient(resolve_mongo_conn_string()).kubernetes
