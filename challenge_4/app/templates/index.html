@@ -42,3 +42,11 @@
       
       
 {% endblock %}
+
+{% block pagescripts %}
+<script type="text/javascript">
+	var login_endpoint =  "{{ url_for('kubernetes.pods') }}";
+</script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='pagescripts/index.js') }}"></script>
+{% endblock %}
