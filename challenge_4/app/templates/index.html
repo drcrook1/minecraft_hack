@@ -1,5 +1,44 @@
-<!doctype html>
-<head>HELLO!</head>
-<body>
-    <p>HELLO WORLD!</p>
-</body>
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="starter-template">
+    <button type="button" class="btn btn-success btn-lg btn-block">Add Server</button>
+    <br>
+    <br>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+            <th scope="col"># Players</th>
+            <th scope="col">Server IP</th>
+            <th scope="col">Server ID</th>
+            <th scope="col">Delete?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row">4 / 30</th>
+            <td>127.0.0.1</td>
+            <td>minecraft-kd3kd9dk</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+            <th scope="row">3 / 100</th>
+            <td>127.0.0.1</td>
+            <td>minecraft-kd3kd9dk</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+            <th scope="row">2 / 20</th>
+            <td>127.0.0.1</td>
+            <td>minecraft-kd3kd9dk</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+          
+</div>
+      
+      
+{% endblock %}
