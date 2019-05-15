@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft
+spec:
+  selector:
+      matchLabels:
+        app: minecraft
+  replicas: 2
+  template:
+      metadata:
+        labels:
+            app: minecraft
+      spec:
+        containers:
+        - name: minecraft
+          image: openhack/minecraft-server
+          imagePullPolicy: Always
+          env:
+          - name: EULA
+            value: "TRUE"
+          ports:
+          - containerPort: 25575
+            name: portone
+          - containerPort: 25565
+            name: porttwo

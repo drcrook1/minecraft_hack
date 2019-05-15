@@ -1,0 +1,39 @@
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: minecraft-1-13-1
+spec:
+  serviceName: minecraft-1-13-1
+  selector:
+      matchLabels:
+        app: minecraft-1-13-1
+  replicas: 1
+  template:
+      metadata:
+        labels:
+            app: minecraft-1-13-1
+      spec:
+        containers:
+        - name: minecraft-1-13-1
+          image: openhack/minecraft-server
+          imagePullPolicy: Always
+          env:
+          - name: EULA
+            value: "TRUE"
+          ports:
+          - containerPort: 25575
+            name: portone
+          - containerPort: 25565
+            name: porttwo        
+          volumeMounts:
+            - name: minecraft-vol
+              mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: minecraft-vol
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: default
+        resources:
+          requests:
+            storage: 1000M
